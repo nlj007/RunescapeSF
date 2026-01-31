@@ -279,6 +279,24 @@ export default function Settings() {
             </Button>
           </div>
         </div>
+
+        {/* Offline Setup */}
+        <div className="bg-white rounded-xl border border-amber-200 overflow-hidden">
+          <div className="px-4 py-3 bg-amber-50 border-b border-amber-200">
+            <h2 className="font-medieval font-bold text-amber-800">Offline Setup</h2>
+          </div>
+          
+          <div className="p-4">
+            <Link to={createPageUrl('OfflineTilesGuide')}>
+              <Button variant="outline" className="w-full justify-start">
+                <Map className="w-4 h-4 mr-2" />
+                Offline Map Tiles Guide
+                <ChevronRight className="w-4 h-4 ml-auto" />
+              </Button>
+            </Link>
+            <p className="text-xs text-gray-500 mt-2">Run on Raspberry Pi without internet</p>
+          </div>
+        </div>
       </div>
 
       <BottomNav currentPage="Settings" />

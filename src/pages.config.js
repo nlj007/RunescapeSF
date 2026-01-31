@@ -55,6 +55,7 @@ import IconSettings from './pages/IconSettings';
 import PinEditor from './pages/PinEditor';
 import Settings from './pages/Settings';
 import ZoneEditor from './pages/ZoneEditor';
+import OfflineTilesGuide from './pages/OfflineTilesGuide';
 import __Layout from './Layout.jsx';
 
 
@@ -67,6 +68,7 @@ export const PAGES = {
     "PinEditor": PinEditor,
     "Settings": Settings,
     "ZoneEditor": ZoneEditor,
+    "OfflineTilesGuide": OfflineTilesGuide,
 }
 
 export const pagesConfig = {
