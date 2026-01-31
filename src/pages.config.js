@@ -51,6 +51,9 @@ import Explorer from './pages/Explorer';
 import History from './pages/History';
 import Achievements from './pages/Achievements';
 import Settings from './pages/Settings';
+import ZoneEditor from './pages/ZoneEditor';
+import PinEditor from './pages/PinEditor';
+import AchievementEditor from './pages/AchievementEditor';
 
 
 export const PAGES = {
@@ -58,6 +61,9 @@ export const PAGES = {
     "History": History,
     "Achievements": Achievements,
     "Settings": Settings,
+    "ZoneEditor": ZoneEditor,
+    "PinEditor": PinEditor,
+    "AchievementEditor": AchievementEditor,
 }
 
 export const pagesConfig = {
