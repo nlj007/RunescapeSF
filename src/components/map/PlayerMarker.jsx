@@ -2,8 +2,26 @@ import React from 'react';
 import { Marker, Popup, Circle } from 'react-leaflet';
 import L from 'leaflet';
 
-// Create RuneScape-style player icon
-const createPlayerIcon = () => {
+// Create player icon - supports custom image or falls back to default
+const createPlayerIcon = (customIconUrl) => {
+  if (customIconUrl) {
+    return L.divIcon({
+      className: 'player-marker',
+      html: `
+        <div class="relative">
+          <img src="${customIconUrl}" 
+               class="w-10 h-10 object-contain drop-shadow-lg animate-pulse" 
+               style="image-rendering: pixelated;"
+               onerror="this.style.display='none'" />
+        </div>
+      `,
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -40]
+    });
+  }
+  
+  // Default RuneScape-style player icon
   return L.divIcon({
     className: 'player-marker',
     html: `
@@ -22,7 +40,7 @@ const createPlayerIcon = () => {
   });
 };
 
-export default function PlayerMarker({ position, accuracy }) {
+export default function PlayerMarker({ position, accuracy, customIconUrl }) {
   if (!position) return null;
 
   return (
@@ -45,7 +63,7 @@ export default function PlayerMarker({ position, accuracy }) {
       {/* Player marker */}
       <Marker 
         position={[position.lat, position.lng]} 
-        icon={createPlayerIcon()}
+        icon={createPlayerIcon(customIconUrl)}
       >
         <Popup className="rs-popup">
           <div className="text-center font-medieval">

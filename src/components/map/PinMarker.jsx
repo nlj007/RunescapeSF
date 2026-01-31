@@ -28,7 +28,32 @@ const iconConfig = {
   clue_scroll: { icon: ScrollText, color: '#8B4513', bg: '#DEB887' }
 };
 
-const createPinIcon = (iconType, visited) => {
+// Create pin icon - supports custom images or falls back to default icons
+const createPinIcon = (iconType, visited, customIconUrl, globalIconUrls = {}) => {
+  // Priority: pin's custom icon > global icon for type > default icon
+  const imageUrl = customIconUrl || globalIconUrls[`${iconType}_icon_url`];
+  
+  if (imageUrl) {
+    // Use custom image
+    const iconHtml = `
+      <div class="relative ${visited ? 'opacity-60' : ''}">
+        <img src="${imageUrl}" 
+             class="w-10 h-10 object-contain drop-shadow-lg transform transition-transform hover:scale-110" 
+             style="image-rendering: pixelated;"
+             onerror="this.style.display='none'" />
+        ${visited ? '<div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white flex items-center justify-center"><span class="text-white text-xs">✓</span></div>' : ''}
+      </div>
+    `;
+    return L.divIcon({
+      className: 'pin-marker',
+      html: iconHtml,
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -40]
+    });
+  }
+  
+  // Fall back to default icon
   const config = iconConfig[iconType] || iconConfig.quest;
   const IconComponent = config.icon;
   
@@ -57,11 +82,12 @@ export default function PinMarker({
   pin, 
   playerPosition, 
   onPinReached,
-  showTriggerRadius = false 
+  showTriggerRadius = false,
+  globalIconUrls = {}
 }) {
   if (!pin) return null;
   
-  const { latitude, longitude, icon_type, title, description, trigger_radius, visited, hidden_until_close, points_reward } = pin;
+  const { latitude, longitude, icon_type, title, description, trigger_radius, visited, hidden_until_close, points_reward, custom_icon_url } = pin;
   
   // Check if pin should be hidden
   if (hidden_until_close && playerPosition) {
@@ -93,7 +119,7 @@ export default function PinMarker({
       
       <Marker
         position={[latitude, longitude]}
-        icon={createPinIcon(icon_type || 'quest', visited)}
+        icon={createPinIcon(icon_type || 'quest', visited, custom_icon_url, globalIconUrls)}
       >
         <Popup className="rs-popup">
           <div className="font-medieval min-w-[180px]">
