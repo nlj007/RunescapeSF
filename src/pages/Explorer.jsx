@@ -240,7 +240,8 @@ export default function Explorer() {
         <MapContainer 
           center={mapCenter}
           zoom={15}
-          mapStyle="classic"
+          mapStyle={appSettings?.map_style || "classic"}
+          customTileUrl={appSettings?.custom_tile_url}
         >
           {/* Zone overlays */}
           <ZoneOverlay zones={zones} />

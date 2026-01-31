@@ -47,26 +47,26 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
+import AchievementEditor from './pages/AchievementEditor';
+import Achievements from './pages/Achievements';
 import Explorer from './pages/Explorer';
 import History from './pages/History';
-import Achievements from './pages/Achievements';
+import IconSettings from './pages/IconSettings';
+import PinEditor from './pages/PinEditor';
 import Settings from './pages/Settings';
 import ZoneEditor from './pages/ZoneEditor';
-import PinEditor from './pages/PinEditor';
-import AchievementEditor from './pages/AchievementEditor';
-import IconSettings from './pages/IconSettings';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
+    "AchievementEditor": AchievementEditor,
+    "Achievements": Achievements,
     "Explorer": Explorer,
     "History": History,
-    "Achievements": Achievements,
+    "IconSettings": IconSettings,
+    "PinEditor": PinEditor,
     "Settings": Settings,
     "ZoneEditor": ZoneEditor,
-    "PinEditor": PinEditor,
-    "AchievementEditor": AchievementEditor,
-    "IconSettings": IconSettings,
 }
 
 export const pagesConfig = {

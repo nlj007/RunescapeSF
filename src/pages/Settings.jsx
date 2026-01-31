@@ -189,9 +189,25 @@ export default function Settings() {
                   <SelectItem value="classic">Classic (Light)</SelectItem>
                   <SelectItem value="dark">Dark Mode</SelectItem>
                   <SelectItem value="parchment">Parchment (Fantasy)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+                  <SelectItem value="custom">Custom Tile Server</SelectItem>
+                  </SelectContent>
+                  </Select>
+                  </div>
+
+                  {settings?.map_style === 'custom' && (
+                  <div>
+                  <Label className="text-sm text-gray-700">Custom Tile URL</Label>
+                  <Input
+                  placeholder="http://localhost:8080/tiles/{z}/{x}/{y}.png"
+                  value={settings?.custom_tile_url || ''}
+                  onChange={(e) => handleSettingChange('custom_tile_url', e.target.value)}
+                  className="mt-1"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                  Local tile server URL with &#123;z&#125;, &#123;x&#125;, &#123;y&#125; placeholders
+                  </p>
+                  </div>
+                  )}
 
             <div>
               <Label className="text-sm text-gray-700">Fog Opacity: {Math.round((settings?.fog_opacity || 0.75) * 100)}%</Label>

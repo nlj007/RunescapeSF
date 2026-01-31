@@ -32,6 +32,7 @@ export default function MapContainer({
   center = SF_CENTER, 
   zoom = DEFAULT_ZOOM,
   mapStyle = 'classic',
+  customTileUrl = null,
   onMapReady,
   className = ''
 }) {
@@ -42,13 +43,15 @@ export default function MapContainer({
   const tileUrls = {
     classic: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    parchment: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg'
+    parchment: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg',
+    custom: customTileUrl || 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   };
 
   const attribution = {
     classic: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     dark: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-    parchment: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>'
+    parchment: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>',
+    custom: 'Local tiles'
   };
 
   return (
