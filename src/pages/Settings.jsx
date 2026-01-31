@@ -122,6 +122,15 @@ export default function Settings() {
               title="Achievement Editor" 
               subtitle={`${achievements.length} achievements`}
               color="text-amber-600"
+            />
+          </Link>
+          
+          <Link to={createPageUrl('IconSettings')}>
+            <SettingLink 
+              icon={Palette} 
+              title="Custom Icons" 
+              subtitle="Upload your own map icons"
+              color="text-pink-600"
               isLast
             />
           </Link>

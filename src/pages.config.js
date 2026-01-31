@@ -54,6 +54,8 @@ import Settings from './pages/Settings';
 import ZoneEditor from './pages/ZoneEditor';
 import PinEditor from './pages/PinEditor';
 import AchievementEditor from './pages/AchievementEditor';
+import IconSettings from './pages/IconSettings';
+import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
@@ -64,9 +66,11 @@ export const PAGES = {
     "ZoneEditor": ZoneEditor,
     "PinEditor": PinEditor,
     "AchievementEditor": AchievementEditor,
+    "IconSettings": IconSettings,
 }
 
 export const pagesConfig = {
     mainPage: "Explorer",
     Pages: PAGES,
+    Layout: __Layout,
 };

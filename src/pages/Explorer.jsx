@@ -50,6 +50,14 @@ export default function Explorer() {
     }
   });
 
+  const { data: appSettings } = useQuery({
+    queryKey: ['appSettings'],
+    queryFn: async () => {
+      const list = await base44.entities.AppSettings.list();
+      return list[0] || {};
+    }
+  });
+
   // Mutations
   const saveLocationMutation = useMutation({
     mutationFn: (locationData) => base44.entities.LocationHistory.create(locationData),
@@ -251,11 +259,16 @@ export default function Explorer() {
               pin={pin}
               playerPosition={position}
               showTriggerRadius={true}
+              globalIconUrls={appSettings || {}}
             />
           ))}
           
           {/* Player marker */}
-          <PlayerMarker position={position} accuracy={accuracy} />
+          <PlayerMarker 
+            position={position} 
+            accuracy={accuracy} 
+            customIconUrl={appSettings?.player_icon_url}
+          />
         </MapContainer>
       </div>
 

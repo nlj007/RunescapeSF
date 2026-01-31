@@ -19,7 +19,9 @@ import {
   AlertTriangle,
   Eye,
   Sparkles,
-  ScrollText
+  ScrollText,
+  Upload,
+  Image
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -77,6 +79,7 @@ const defaultPin = {
   latitude: 37.7749,
   longitude: -122.4194,
   icon_type: 'quest',
+  custom_icon_url: '',
   trigger_radius: 30,
   action_type: 'message',
   action_data: '',
@@ -89,6 +92,7 @@ export default function PinEditor() {
   const [editingPin, setEditingPin] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
   const [deletePin, setDeletePin] = useState(null);
+  const [uploadingIcon, setUploadingIcon] = useState(false);
 
   const { data: pins = [], isLoading } = useQuery({
     queryKey: ['pins'],
@@ -140,6 +144,14 @@ export default function PinEditor() {
   };
 
   const getIconConfig = (type) => iconTypes.find(i => i.value === type) || iconTypes[0];
+
+  const handleIconUpload = async (file) => {
+    if (!file) return;
+    setUploadingIcon(true);
+    const { file_url } = await base44.integrations.Core.UploadFile({ file });
+    setEditingPin({ ...editingPin, custom_icon_url: file_url });
+    setUploadingIcon(false);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-amber-100">
@@ -371,6 +383,63 @@ export default function PinEditor() {
                   checked={editingPin.hidden_until_close}
                   onCheckedChange={(v) => setEditingPin({ ...editingPin, hidden_until_close: v })}
                 />
+              </div>
+
+              {/* Custom Icon */}
+              <div className="border border-amber-200 rounded-lg p-3">
+                <Label className="flex items-center gap-2">
+                  <Image className="w-4 h-4" />
+                  Custom Icon (Optional)
+                </Label>
+                <p className="text-xs text-gray-500 mt-1">Override the default icon with your own image</p>
+                
+                <div className="flex items-center gap-3 mt-2">
+                  {editingPin.custom_icon_url && (
+                    <div className="w-12 h-12 rounded border bg-gray-50 flex items-center justify-center">
+                      <img 
+                        src={editingPin.custom_icon_url} 
+                        alt="Custom icon" 
+                        className="w-10 h-10 object-contain"
+                        style={{ imageRendering: 'pixelated' }}
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1">
+                    <Input
+                      placeholder="Image URL"
+                      value={editingPin.custom_icon_url || ''}
+                      onChange={(e) => setEditingPin({ ...editingPin, custom_icon_url: e.target.value })}
+                      className="text-xs"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex gap-2 mt-2">
+                  <Label className="cursor-pointer">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => handleIconUpload(e.target.files?.[0])}
+                    />
+                    <Button variant="outline" size="sm" disabled={uploadingIcon} asChild>
+                      <span>
+                        <Upload className="w-3 h-3 mr-1" />
+                        {uploadingIcon ? 'Uploading...' : 'Upload'}
+                      </span>
+                    </Button>
+                  </Label>
+                  {editingPin.custom_icon_url && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => setEditingPin({ ...editingPin, custom_icon_url: '' })}
+                    >
+                      <Trash2 className="w-3 h-3 mr-1" />
+                      Remove
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           )}
