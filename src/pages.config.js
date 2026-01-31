@@ -47,8 +47,20 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
+import Explorer from './pages/Explorer';
+import History from './pages/History';
+import Achievements from './pages/Achievements';
+import Settings from './pages/Settings';
 
-export const pagesConfig = {
-	Pages: {}
+
+export const PAGES = {
+    "Explorer": Explorer,
+    "History": History,
+    "Achievements": Achievements,
+    "Settings": Settings,
 }
 
+export const pagesConfig = {
+    mainPage: "Explorer",
+    Pages: PAGES,
+};
