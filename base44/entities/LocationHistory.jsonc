@@ -1,0 +1,34 @@
+{
+  "name": "LocationHistory",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "description": "GPS latitude coordinate"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "GPS longitude coordinate"
+    },
+    "accuracy": {
+      "type": "number",
+      "description": "GPS accuracy in meters"
+    },
+    "zone_id": {
+      "type": "string",
+      "description": "ID of the zone this location belongs to"
+    },
+    "unlocked_new_zone": {
+      "type": "boolean",
+      "description": "Whether this entry unlocked a new zone"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Session identifier for grouping"
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "name": "Pin",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Pin display name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Pin description or clue text"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "GPS latitude"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "GPS longitude"
+    },
+    "icon_type": {
+      "type": "string",
+      "enum": [
+        "quest",
+        "treasure",
+        "npc",
+        "landmark",
+        "shop",
+        "bank",
+        "danger",
+        "hidden",
+        "portal",
+        "clue_scroll"
+      ],
+      "description": "Type of icon to display"
+    },
+    "custom_icon_url": {
+      "type": "string",
+      "description": "URL to custom icon image (overrides icon_type)"
+    },
+    "trigger_radius": {
+      "type": "number",
+      "description": "Radius in meters to trigger activation"
+    },
+    "visited": {
+      "type": "boolean",
+      "description": "Whether pin has been visited"
+    },
+    "visit_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the pin was visited"
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "message",
+        "unlock_zone",
+        "award_points",
+        "reveal_pins"
+      ],
+      "description": "What happens when triggered"
+    },
+    "action_data": {
+      "type": "string",
+      "description": "JSON data for the action"
+    },
+    "points_reward": {
+      "type": "number",
+      "description": "Points awarded for visiting"
+    },
+    "hidden_until_close": {
+      "type": "boolean",
+      "description": "Only visible when within trigger radius"
+    },
+    "zone_id": {
+      "type": "string",
+      "description": "Associated zone ID"
+    }
+  },
+  "required": [
+    "title",
+    "latitude",
+    "longitude"
+  ]
+}

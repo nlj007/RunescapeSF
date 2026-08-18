@@ -1,0 +1,59 @@
+{
+  "name": "Zone",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name (e.g., Varrock District)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Zone description"
+    },
+    "boundary": {
+      "type": "string",
+      "description": "GeoJSON polygon as string"
+    },
+    "center_lat": {
+      "type": "number",
+      "description": "Center latitude for display"
+    },
+    "center_lng": {
+      "type": "number",
+      "description": "Center longitude for display"
+    },
+    "unlocked": {
+      "type": "boolean",
+      "description": "Whether zone has been discovered"
+    },
+    "unlock_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the zone was unlocked"
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "varrock",
+        "lumbridge",
+        "falador",
+        "wilderness",
+        "camelot",
+        "ardougne"
+      ],
+      "description": "Visual theme for the zone"
+    },
+    "color": {
+      "type": "string",
+      "description": "Hex color for the zone"
+    },
+    "points_reward": {
+      "type": "number",
+      "description": "Points awarded for unlocking"
+    }
+  },
+  "required": [
+    "name",
+    "boundary"
+  ]
+}

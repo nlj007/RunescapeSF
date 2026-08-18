@@ -1,0 +1,43 @@
+{
+  "name": "UserStats",
+  "type": "object",
+  "properties": {
+    "total_distance_meters": {
+      "type": "number",
+      "description": "Total distance traveled in meters"
+    },
+    "zones_unlocked": {
+      "type": "number",
+      "description": "Number of zones discovered"
+    },
+    "pins_visited": {
+      "type": "number",
+      "description": "Number of pins activated"
+    },
+    "total_points": {
+      "type": "number",
+      "description": "Total exploration points"
+    },
+    "achievements_earned": {
+      "type": "number",
+      "description": "Number of achievements unlocked"
+    },
+    "last_known_lat": {
+      "type": "number",
+      "description": "Last GPS latitude"
+    },
+    "last_known_lng": {
+      "type": "number",
+      "description": "Last GPS longitude"
+    },
+    "exploration_level": {
+      "type": "number",
+      "description": "RuneScape-style level (1-99)"
+    },
+    "experience_points": {
+      "type": "number",
+      "description": "XP towards next level"
+    }
+  },
+  "required": []
+}

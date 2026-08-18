@@ -1,0 +1,57 @@
+{
+  "name": "Achievement",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Achievement name"
+    },
+    "description": {
+      "type": "string",
+      "description": "How to earn this achievement"
+    },
+    "icon": {
+      "type": "string",
+      "enum": [
+        "explorer",
+        "treasure_hunter",
+        "cartographer",
+        "wanderer",
+        "pioneer",
+        "completionist"
+      ],
+      "description": "Achievement icon type"
+    },
+    "requirement_type": {
+      "type": "string",
+      "enum": [
+        "zones_unlocked",
+        "pins_visited",
+        "distance_traveled",
+        "days_active"
+      ],
+      "description": "Type of requirement"
+    },
+    "requirement_value": {
+      "type": "number",
+      "description": "Number needed to unlock"
+    },
+    "points_reward": {
+      "type": "number",
+      "description": "Points awarded"
+    },
+    "unlocked": {
+      "type": "boolean",
+      "description": "Whether achievement is earned"
+    },
+    "unlock_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "title",
+    "requirement_type",
+    "requirement_value"
+  ]
+}

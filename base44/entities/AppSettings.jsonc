@@ -1,0 +1,89 @@
+{
+  "name": "AppSettings",
+  "type": "object",
+  "properties": {
+    "gps_polling_interval": {
+      "type": "number",
+      "description": "GPS update frequency in seconds"
+    },
+    "map_style": {
+      "type": "string",
+      "enum": [
+        "classic",
+        "dark",
+        "parchment",
+        "custom"
+      ],
+      "description": "Map visual style"
+    },
+    "custom_tile_url": {
+      "type": "string",
+      "description": "Custom tile server URL (e.g. http://localhost:8080/tiles/{z}/{x}/{y}.png)"
+    },
+    "sound_enabled": {
+      "type": "boolean",
+      "description": "Play sound effects"
+    },
+    "battery_saver_mode": {
+      "type": "boolean",
+      "description": "Reduce GPS polling frequency"
+    },
+    "fog_opacity": {
+      "type": "number",
+      "description": "Fog of war opacity 0-1"
+    },
+    "default_city": {
+      "type": "string",
+      "description": "Default city center coordinates"
+    },
+    "default_zoom": {
+      "type": "number",
+      "description": "Default map zoom level"
+    },
+    "player_icon_url": {
+      "type": "string",
+      "description": "Custom player marker image URL"
+    },
+    "quest_icon_url": {
+      "type": "string",
+      "description": "Custom quest pin icon URL"
+    },
+    "treasure_icon_url": {
+      "type": "string",
+      "description": "Custom treasure pin icon URL"
+    },
+    "npc_icon_url": {
+      "type": "string",
+      "description": "Custom NPC pin icon URL"
+    },
+    "landmark_icon_url": {
+      "type": "string",
+      "description": "Custom landmark pin icon URL"
+    },
+    "shop_icon_url": {
+      "type": "string",
+      "description": "Custom shop pin icon URL"
+    },
+    "bank_icon_url": {
+      "type": "string",
+      "description": "Custom bank pin icon URL"
+    },
+    "danger_icon_url": {
+      "type": "string",
+      "description": "Custom danger pin icon URL"
+    },
+    "hidden_icon_url": {
+      "type": "string",
+      "description": "Custom hidden pin icon URL"
+    },
+    "portal_icon_url": {
+      "type": "string",
+      "description": "Custom portal pin icon URL"
+    },
+    "clue_scroll_icon_url": {
+      "type": "string",
+      "description": "Custom clue scroll pin icon URL"
+    }
+  },
+  "required": []
+}
